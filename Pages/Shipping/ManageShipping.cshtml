@@ -1,0 +1,42 @@
+﻿@page
+@model Fast_Track_Web_Application.Pages.Products.ManageShippingModel
+@{
+    ViewData["Title"] = "Manage Shipping";
+}
+
+<h2>Manage Shipping</h2>
+
+<form method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Details</th>
+                <th>Tracking Number</th>
+                <th>Shipping Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model.Products)
+            {
+                <tr>
+                    <td>@product.Name</td>
+                    <td>@product.Details</td>
+                    <td>@product.TrackingNumber</td>
+                    <td>
+                        <select asp-for="ShippingStatusUpdates[@product.Id]" class="form-select">
+                            <option value="Pending" selected="@((product.ShippingStatus == "Pending") ? "selected" : null)">Pending</option>
+                            <option value="Shipped" selected="@((product.ShippingStatus == "Shipped") ? "selected" : null)">Shipped</option>
+                            <option value="Delivered" selected="@((product.ShippingStatus == "Delivered") ? "selected" : null)">Delivered</option>
+                            <option value="Canceled" selected="@((product.ShippingStatus == "Canceled") ? "selected" : null)">Canceled</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button type="submit" asp-route-id="@product.Id" class="btn btn-primary">Update</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>

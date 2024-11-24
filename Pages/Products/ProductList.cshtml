@@ -1,0 +1,27 @@
+﻿@page
+@model Fast_Track_Web_Application.Pages.Products.ProductListModel
+@{
+    ViewData["Title"] = "Product List";
+}
+
+<h2>Product List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Details</th>
+            <th>Tracking Number</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.Products)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Details</td>
+                <td>@product.TrackingNumber</td>
+            </tr>
+        }
+    </tbody>
+</table>

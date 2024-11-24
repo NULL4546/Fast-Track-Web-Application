@@ -1,0 +1,27 @@
+﻿@page
+@model Fast_Track_Web_Application.Pages.Admins.AdminListModel
+@{
+    ViewData["Title"] = "Admin List";
+}
+
+<h2>Admin List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var admin in Model.Admins)
+        {
+            <tr>
+                <td>@admin.Email</td>
+                <td>
+                    <!-- Add any action buttons here, like removing an admin -->
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
